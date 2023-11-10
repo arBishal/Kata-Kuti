@@ -1,13 +1,27 @@
-import './App.css';
+import "./App.css";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <button>
-        X
-      </button>
+    <div className="main">
+      
+      <h1>Cit Cat Coe</h1>
+      
+      <div className="board">
+      
+        <button className="box">X</button>
+        <button className="box">X</button>
+        <button className="box">X</button>
+
+        <button className="box">X</button>
+        <button className="box">X</button>
+        <button className="box">X</button>
+
+        <button className="box">X</button>
+        <button className="box">X</button>
+        <button className="box">X</button>
+      
+      </div>
+
     </div>
   );
 }
-
-export default App;
