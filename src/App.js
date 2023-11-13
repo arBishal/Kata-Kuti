@@ -47,7 +47,7 @@ export default function App() {
 
   return (
     <div className="main">
-      <h1>কাটাকুটি</h1>
+      <h1>কাটা-কুটি</h1>
       <div className="status">{status}</div>
 
       <div className="board">
