@@ -1,31 +1,38 @@
+import {useState} from "react";
 import "./App.css";
 
-function Box({value}) {
-  return <button className="box">{value}</button>
+function Box() {
+  const [value, setValue] = useState(null);
+
+  function handleClick() {
+    setValue("X");
+  }
+
+  return (
+    <button className="box" onClick={handleClick}>
+      {value}
+    </button>
+  );
 }
 
 export default function App() {
   return (
     <div className="main">
-      
       <h1>কাটাকুটি</h1>
-      
+
       <div className="board">
-      
-        <Box value="১"/>
-        <Box value="২"/>
-        <Box value="৩"/>
+        <Box />
+        <Box />
+        <Box />
 
-        <Box value="৪"/>
-        <Box value="৫"/>
-        <Box value="৬"/>
+        <Box />
+        <Box />
+        <Box />
 
-        <Box value="৭"/>
-        <Box value="৮"/>
-        <Box value="৯"/>
-      
+        <Box />
+        <Box />
+        <Box />
       </div>
-
     </div>
   );
 }
