@@ -12,16 +12,26 @@ function Box({value, onBoxClick}) {
 export default function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xNext, setXNext] = useState(true);
+  const [count, setCount] = useState(0);
+
   const winner = winnerCalculation(board);
+
   let status;
 
-  if(winner) {
+  if(winner!=null) {
     if(winner==="X") status = "কাটা জিতেছে!";
     else status = "কুটি জিতেছে!";
+    console.log(winner);
+    console.log(count);
   }
   else status = "এবার খেলবে: " + (xNext? "কাটা" : "কুটি");
 
+  if(count>8) status = "কেউ জিতেনি!";
+  console.log(count);
+
   function handleClick(index) {
+    setCount(count+1);
+
     if(board[index] || winnerCalculation(board)) return;
 
     const nextBoard = board.slice();
