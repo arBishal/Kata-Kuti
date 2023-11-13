@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function Box({ value, onBoxClick }) {
@@ -9,10 +9,19 @@ function Box({ value, onBoxClick }) {
   );
 }
 
-export default function App() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [xNext, setXNext] = useState(true);
+function Board({xNext, board, onPlay}) {
   const [count, setCount] = useState(0);
+  
+  function handleClick(index) {
+    setCount(count + 1);
+
+    if(board[index] || winnerCalculation(board)) return;
+
+    const nextBoard = board.slice();
+    nextBoard[index] = xNext ? "X" : "O";
+
+    onPlay(nextBoard);
+  }
 
   const winner = winnerCalculation(board);
 
@@ -22,32 +31,12 @@ export default function App() {
     if (winner) {
       if (winner === "X") status = "কাটা জিতেছে!";
       else if (winner === "O") status = "কুটি জিতেছে!";
-    }
-    else if (winner === null && count > 8) status = "কেউ জিতেনি!";
+    } else if (winner === null && count > 8) status = "কেউ জিতেনি!";
     else status = "এবার খেলবে: " + (xNext ? "কাটা" : "কুটি");
   }
 
-  function handleClick(index) {
-    setCount(count + 1);
-
-    if (board[index] || winnerCalculation(board)) return;
-
-    const nextBoard = board.slice();
-
-    if (xNext) {
-      nextBoard[index] = "X";
-      setXNext(false);
-    } else {
-      nextBoard[index] = "O";
-      setXNext(true);
-    }
-
-    setBoard(nextBoard);
-  }
-
   return (
-    <div className="main">
-      <h1>কাটা-কুটি</h1>
+    <>
       <div className="status">{status}</div>
 
       <div className="board">
@@ -63,6 +52,27 @@ export default function App() {
         <Box value={board[7]} onBoxClick={() => handleClick(7)} />
         <Box value={board[8]} onBoxClick={() => handleClick(8)} />
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  const [xNext, setXNext] = useState(true);
+  const [historyBoard, setHistoryBoard] = useState([Array(9).fill(null)]);
+  const currentBoard = historyBoard[historyBoard.length - 1];
+
+  function handlePlay(nextBoard) {
+    setHistoryBoard([...historyBoard, nextBoard]);
+    setXNext(!xNext);
+  }
+
+  return (
+    <div className="main">
+      <h1>কাটা-কুটি</h1>
+
+      <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
+
+      <div className="history"></div>
     </div>
   );
 }
