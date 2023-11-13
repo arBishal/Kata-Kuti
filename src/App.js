@@ -1,7 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import "./App.css";
 
-function Box({value, onBoxClick}) {
+function Box({ value, onBoxClick }) {
   return (
     <button className="box" onClick={onBoxClick}>
       {value}
@@ -17,36 +17,33 @@ export default function App() {
   const winner = winnerCalculation(board);
 
   let status;
-
-  if(winner!=null) {
-    if(winner==="X") status = "কাটা জিতেছে!";
-    else status = "কুটি জিতেছে!";
-    console.log(winner);
-    console.log(count);
+  if (count === 0) status = "শুরু করবে: কাটা";
+  else {
+    if (winner) {
+      if (winner === "X") status = "কাটা জিতেছে!";
+      else if (winner === "O") status = "কুটি জিতেছে!";
+    }
+    else if (winner === null && count > 8) status = "কেউ জিতেনি!";
+    else status = "এবার খেলবে: " + (xNext ? "কাটা" : "কুটি");
   }
-  else status = "এবার খেলবে: " + (xNext? "কাটা" : "কুটি");
-
-  if(count>8) status = "কেউ জিতেনি!";
-  console.log(count);
 
   function handleClick(index) {
-    setCount(count+1);
+    setCount(count + 1);
 
-    if(board[index] || winnerCalculation(board)) return;
+    if (board[index] || winnerCalculation(board)) return;
 
     const nextBoard = board.slice();
-    
-    if(xNext) {
+
+    if (xNext) {
       nextBoard[index] = "X";
       setXNext(false);
-    }
-    else {
+    } else {
       nextBoard[index] = "O";
       setXNext(true);
     }
-    
+
     setBoard(nextBoard);
-  };
+  }
 
   return (
     <div className="main">
@@ -54,37 +51,36 @@ export default function App() {
       <div className="status">{status}</div>
 
       <div className="board">
-        <Box value={board[0]} onBoxClick={() => handleClick(0)}/>
-        <Box value={board[1]} onBoxClick={() => handleClick(1)}/>
-        <Box value={board[2]} onBoxClick={() => handleClick(2)}/>
+        <Box value={board[0]} onBoxClick={() => handleClick(0)} />
+        <Box value={board[1]} onBoxClick={() => handleClick(1)} />
+        <Box value={board[2]} onBoxClick={() => handleClick(2)} />
 
-        <Box value={board[3]} onBoxClick={() => handleClick(3)}/>
-        <Box value={board[4]} onBoxClick={() => handleClick(4)}/>
-        <Box value={board[5]} onBoxClick={() => handleClick(5)}/>
+        <Box value={board[3]} onBoxClick={() => handleClick(3)} />
+        <Box value={board[4]} onBoxClick={() => handleClick(4)} />
+        <Box value={board[5]} onBoxClick={() => handleClick(5)} />
 
-        <Box value={board[6]} onBoxClick={() => handleClick(6)}/>
-        <Box value={board[7]} onBoxClick={() => handleClick(7)}/>
-        <Box value={board[8]} onBoxClick={() => handleClick(8)}/>
+        <Box value={board[6]} onBoxClick={() => handleClick(6)} />
+        <Box value={board[7]} onBoxClick={() => handleClick(7)} />
+        <Box value={board[8]} onBoxClick={() => handleClick(8)} />
       </div>
-
     </div>
   );
 }
 
 function winnerCalculation(board) {
   const moves = [
-    [0,1,2],
-    [3,4,5],
-    [6,7,8],
-    [0,3,6],
-    [1,4,7],
-    [2,5,8],
-    [0,4,8],
-    [2,4,6]
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
   ];
-  for (let i=0; i<moves.length; i++) {
-    const [a,b,c] = moves[i];
-    if(board[a] && board[a] === board[b] && board[a] === board[c]) {
+  for (let i = 0; i < moves.length; i++) {
+    const [a, b, c] = moves[i];
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       return board[a];
     }
   }
