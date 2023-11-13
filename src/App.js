@@ -1,37 +1,39 @@
 import {useState} from "react";
 import "./App.css";
 
-function Box() {
-  const [value, setValue] = useState(null);
-
-  function handleClick() {
-    setValue("X");
-  }
-
+function Box({value, onBoxClick}) {
   return (
-    <button className="box" onClick={handleClick}>
+    <button className="box" onClick={onBoxClick}>
       {value}
     </button>
   );
 }
 
 export default function App() {
+  const [board, setBoard] = useState(Array(9).fill(null));
+
+  handleClick(index) {
+    const nextBoard = board.slice();
+    nextBoard[index] = "X";
+    setBoard(nextBoard);
+  }
+
   return (
     <div className="main">
       <h1>কাটাকুটি</h1>
 
       <div className="board">
-        <Box />
-        <Box />
-        <Box />
+        <Box value={board[0]} onBoxClick={() => handleClick(0)}/>
+        <Box value={board[1]} onBoxClick={() => handleClick(1)}/>
+        <Box value={board[2]} onBoxClick={() => handleClick(2)}/>
 
-        <Box />
-        <Box />
-        <Box />
+        <Box value={board[3]} onBoxClick={() => handleClick(3)}/>
+        <Box value={board[4]} onBoxClick={() => handleClick(4)}/>
+        <Box value={board[5]} onBoxClick={() => handleClick(5)}/>
 
-        <Box />
-        <Box />
-        <Box />
+        <Box value={board[6]} onBoxClick={() => handleClick(6)}/>
+        <Box value={board[7]} onBoxClick={() => handleClick(7)}/>
+        <Box value={board[8]} onBoxClick={() => handleClick(8)}/>
       </div>
     </div>
   );
