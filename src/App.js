@@ -15,8 +15,11 @@ export default function App() {
   const winner = winnerCalculation(board);
   let status;
 
-  if(winner) status = "The winner is: " + winner;
-  else status = "Next move: " + (xNext? "X" : "O");
+  if(winner) {
+    if(winner==="X") status = "কাটা জিতেছে!";
+    else status = "কুটি জিতেছে!";
+  }
+  else status = "এবার খেলবে: " + (xNext? "কাটা" : "কুটি");
 
   function handleClick(index) {
     if(board[index] || winnerCalculation(board)) return;
@@ -38,6 +41,7 @@ export default function App() {
   return (
     <div className="main">
       <h1>কাটাকুটি</h1>
+      <div className="status">{status}</div>
 
       <div className="board">
         <Box value={board[0]} onBoxClick={() => handleClick(0)}/>
@@ -53,7 +57,6 @@ export default function App() {
         <Box value={board[8]} onBoxClick={() => handleClick(8)}/>
       </div>
 
-      <div className="status">{status}</div>
     </div>
   );
 }

@@ -27,3 +27,9 @@ h1 {
   color: white;
   font-size: 50px;
 }
+
+.status {
+  color: white;
+  font-size: 25px;
+  margin-bottom: 25px;
+}
