@@ -11,12 +11,24 @@ function Box({value, onBoxClick}) {
 
 export default function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
+  const [xNext, setXNext] = useState(true);
 
-  handleClick(index) {
+  function handleClick(index) {
+    if(board[index] != null) return;
+    
     const nextBoard = board.slice();
-    nextBoard[index] = "X";
+    
+    if(xNext) {
+      nextBoard[index] = "X";
+      setXNext(false);
+    }
+    else {
+      nextBoard[index] = "O";
+      setXNext(true);
+    }
+    
     setBoard(nextBoard);
-  }
+  };
 
   return (
     <div className="main">
