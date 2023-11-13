@@ -1,5 +1,9 @@
 import "./App.css";
 
+function Box({value}) {
+  return <button className="box">{value}</button>
+}
+
 export default function App() {
   return (
     <div className="main">
@@ -8,17 +12,17 @@ export default function App() {
       
       <div className="board">
       
-        <button className="box">১</button>
-        <button className="box">২</button>
-        <button className="box">৩</button>
+        <Box value="১"/>
+        <Box value="২"/>
+        <Box value="৩"/>
 
-        <button className="box">৪</button>
-        <button className="box">৫</button>
-        <button className="box">৬</button>
+        <Box value="৪"/>
+        <Box value="৫"/>
+        <Box value="৬"/>
 
-        <button className="box">৭</button>
-        <button className="box">৮</button>
-        <button className="box">৯</button>
+        <Box value="৭"/>
+        <Box value="৮"/>
+        <Box value="৯"/>
       
       </div>
 
