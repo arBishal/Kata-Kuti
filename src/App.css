@@ -21,6 +21,7 @@
   color: #61dafb;
   background-color: #282c34;
   border: 2px solid #61dafb;
+  cursor: pointer;
 }
 
 h1 {
@@ -33,4 +34,20 @@ h1 {
   color: white;
   font-size: 25px;
   margin-bottom: 25px;
+}
+
+.history {
+  margin: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }

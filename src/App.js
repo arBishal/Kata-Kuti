@@ -26,7 +26,7 @@ export default function App() {
     if (move > 0) description = "চাল #" + move;
     else description = "শুরু!";
     return (
-      <button key={move} onClick={() => jumpTo(move)}>
+      <button className="history-button" key={move} onClick={() => jumpTo(move)}>
         {description}
       </button>
     );

@@ -9,6 +9,13 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #282c34;
+  overflow:auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
