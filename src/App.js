@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 function Box({ value, onBoxClick }) {
@@ -59,12 +59,29 @@ function Board({xNext, board, onPlay}) {
 export default function App() {
   const [xNext, setXNext] = useState(true);
   const [historyBoard, setHistoryBoard] = useState([Array(9).fill(null)]);
-  const currentBoard = historyBoard[historyBoard.length - 1];
+  const [currentMove, setCurrentMove] = useState(0);
+  const currentBoard = historyBoard[currentMove];
 
   function handlePlay(nextBoard) {
-    setHistoryBoard([...historyBoard, nextBoard]);
+    const nextHistoryBoard = [...historyBoard.slice(0, currentMove+1), nextBoard];
+    setHistoryBoard(nextHistoryBoard);
+    setCurrentMove(nextHistoryBoard.length - 1);
     setXNext(!xNext);
   }
+
+  function jumpTo(nextMove) {
+    setCurrentMove(nextMove);
+    setXNext(nextMove % 2 === 0);
+  }
+
+  const moves = historyBoard.map((board, move) => {
+    let description;
+    if (move > 0) description = "চাল #" + move;
+    else description = "শুরু!";
+    return (
+        <button key={move} onClick={() => jumpTo(move)}>{description}</button>
+    );
+  });
 
   return (
     <div className="main">
@@ -72,7 +89,9 @@ export default function App() {
 
       <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
 
-      <div className="history"></div>
+      <div className="history">
+        {moves}
+      </div>
     </div>
   );
 }
