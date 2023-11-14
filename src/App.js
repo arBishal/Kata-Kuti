@@ -57,21 +57,19 @@ function Board({xNext, board, onPlay}) {
 }
 
 export default function App() {
-  const [xNext, setXNext] = useState(true);
   const [historyBoard, setHistoryBoard] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const currentBoard = historyBoard[currentMove];
+  const xNext = currentMove % 2 === 0;
 
   function handlePlay(nextBoard) {
     const nextHistoryBoard = [...historyBoard.slice(0, currentMove+1), nextBoard];
     setHistoryBoard(nextHistoryBoard);
     setCurrentMove(nextHistoryBoard.length - 1);
-    setXNext(!xNext);
   }
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
-    setXNext(nextMove % 2 === 0);
   }
 
   const moves = historyBoard.map((board, move) => {
