@@ -5,6 +5,7 @@ import Board from "./Board";
 export default function App() {
   const [historyBoard, setHistoryBoard] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [historyVisibility, setHistoryVisibility] = useState(false);
   const currentBoard = historyBoard[currentMove];
   const xNext = currentMove % 2 === 0;
 
@@ -32,13 +33,23 @@ export default function App() {
     );
   });
 
+  function toggleHistoryVisibility() {
+    setHistoryVisibility(!historyVisibility);
+  }
+
   return (
     <div className="main">
       <h1>কাটা-কুটি</h1>
 
       <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
-
-      <div className="history">{moves}</div>
+      
+      <div className="buttons">
+        <button className="buttons-button">শুরু থেকে শুরু হোক!</button>
+        <button className="buttons-button">খেলব না, এই চাল বাদ!</button>
+        <button className="buttons-button" onClick={toggleHistoryVisibility}>কী যে হইসিল এইখানে!</button>
+      </div>
+      
+      <div className="history" hidden>{moves}</div>
     </div>
   );
 }
