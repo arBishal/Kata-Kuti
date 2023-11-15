@@ -42,6 +42,11 @@ export default function App() {
     setCurrentMove(0);
   }
 
+  function handleUndo() {
+    if (currentMove === 0) return;
+    setCurrentMove(currentMove - 1);
+  }
+
   function toggleHistoryVisibility() {
     setHistoryVisibility(!historyVisibility);
   }
@@ -54,7 +59,7 @@ export default function App() {
 
       <div className="buttons">
         <button className="buttons-button" onClick={handleReset}>শুরু থেকে শুরু হোক!</button>
-        <button className="buttons-button">খেলব না, এই চাল বাদ!</button>
+        <button className="buttons-button" onClick={handleUndo}>খেলব না, এই চাল বাদ!</button>
         <button className="buttons-button" onClick={toggleHistoryVisibility}>
           {historyVisibility? "থাক দেখা লাগবে না!":"কী যে হইসিল এইখানে!"}
         </button>
