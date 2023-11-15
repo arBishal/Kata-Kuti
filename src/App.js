@@ -27,7 +27,11 @@ export default function App() {
     if (move > 0) description = "চাল #" + move;
     else description = "শুরু!";
     return (
-      <button className="history-button" key={move} onClick={() => jumpTo(move)}>
+      <button
+        className="history-button"
+        key={move}
+        onClick={() => jumpTo(move)}
+      >
         {description}
       </button>
     );
@@ -42,14 +46,18 @@ export default function App() {
       <h1>কাটা-কুটি</h1>
 
       <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
-      
+
       <div className="buttons">
         <button className="buttons-button">শুরু থেকে শুরু হোক!</button>
         <button className="buttons-button">খেলব না, এই চাল বাদ!</button>
-        <button className="buttons-button" onClick={toggleHistoryVisibility}>কী যে হইসিল এইখানে!</button>
+        <button className="buttons-button" onClick={toggleHistoryVisibility}>
+          {historyVisibility? "থাক দেখা লাগবে না!":"কী যে হইসিল এইখানে!"}
+        </button>
       </div>
-      
-      <div className="history" hidden>{moves}</div>
+
+      <div className={historyVisibility ? "history" : ""} hidden={!historyVisibility}>
+        {moves}
+      </div>
     </div>
   );
 }

@@ -40,19 +40,11 @@ h1 {
   margin-bottom: 25px;
 }
 
-.history {
-  margin: 25px 0px;
-  display: flex;
-  flex-direction: row;
-}
-
 .buttons {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  gap: 15px;
   width: 310px;
 }
 
@@ -70,6 +62,12 @@ h1 {
   color: #61dafb;
   border: 1px solid #61dafb;
   transform: scale(1.025);
+}
+
+.history {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .history-button {
