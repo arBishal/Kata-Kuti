@@ -37,6 +37,11 @@ export default function App() {
     );
   });
 
+  function handleReset() {
+    setHistoryBoard([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   function toggleHistoryVisibility() {
     setHistoryVisibility(!historyVisibility);
   }
@@ -48,7 +53,7 @@ export default function App() {
       <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
 
       <div className="buttons">
-        <button className="buttons-button">শুরু থেকে শুরু হোক!</button>
+        <button className="buttons-button" onClick={handleReset}>শুরু থেকে শুরু হোক!</button>
         <button className="buttons-button">খেলব না, এই চাল বাদ!</button>
         <button className="buttons-button" onClick={toggleHistoryVisibility}>
           {historyVisibility? "থাক দেখা লাগবে না!":"কী যে হইসিল এইখানে!"}
