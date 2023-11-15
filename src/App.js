@@ -58,14 +58,21 @@ export default function App() {
       <Board xNext={xNext} board={currentBoard} onPlay={handlePlay} />
 
       <div className="buttons">
-        <button className="buttons-button" onClick={handleReset}>শুরু থেকে শুরু হোক!</button>
-        <button className="buttons-button" onClick={handleUndo}>খেলব না, এই চাল বাদ!</button>
+        <button className="buttons-button" onClick={handleReset}>
+          শুরু থেকে শুরু হোক!
+        </button>
+        <button className="buttons-button" onClick={handleUndo}>
+          খেলব না, এই চাল বাদ!
+        </button>
         <button className="buttons-button" onClick={toggleHistoryVisibility}>
-          {historyVisibility? "থাক দেখা লাগবে না!":"কী যে হইসিল এইখানে!"}
+          {historyVisibility ? "থাক দেখা লাগবে না!" : "কী যে হইসিল এইখানে!"}
         </button>
       </div>
 
-      <div className={historyVisibility ? "history" : ""} hidden={!historyVisibility}>
+      <div
+        className={historyVisibility ? "history" : ""}
+        hidden={!historyVisibility}
+      >
         {moves}
       </div>
     </div>
