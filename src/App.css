@@ -13,6 +13,16 @@
   width: fit-content;
 }
 
+.board-result {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 5px;
+  height: fit-content;
+  width: fit-content;
+  opacity: 50%;
+  pointer-events: none;
+}
+
 .box {
   height: 100px;
   width: 100px;

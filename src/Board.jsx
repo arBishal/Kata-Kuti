@@ -39,7 +39,7 @@ export default function Board({ xNext, board, onPlay }) {
     <>
       <div className="status">{status}</div>
 
-      <div className="board">
+      <div className={winner ? "board-result" : "board"}>
         <Box value={board[0]} onBoxClick={() => handleClick(0)} />
         <Box value={board[1]} onBoxClick={() => handleClick(1)} />
         <Box value={board[2]} onBoxClick={() => handleClick(2)} />
