@@ -43,7 +43,7 @@ h1 {
   font-size: 50px;
   width: 310px;
   text-align: center;
-  margin: 15px auto;
+  margin: 25px auto 15px auto;
 }
 
 .status {
