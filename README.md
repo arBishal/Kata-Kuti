@@ -8,7 +8,8 @@ Basically this is the Bangla version of the classic Tic-Tac-Toe game.
 * You can time travel to a previous move of your choice.
 
 ## How it looks?
-![image](https://github.com/arBishal/Cit-Cat-Coe/assets/48941190/17f6f5d4-703c-4592-94c5-e3340f1fb0ca)
+![image](https://github.com/arBishal/Kata-Kuti/assets/48941190/a9a651e6-dc3a-40f6-91b9-f5fc56cd3865)
+
 
 If you can't read the texts, I'm sorry. 😞
 
