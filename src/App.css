@@ -31,12 +31,15 @@
 h1 {
   color: white;
   font-size: 50px;
-  margin-top: 50px;
+  width: 310px;
+  text-align: center;
+  margin: 15px auto;
 }
 
 .status {
   color: white;
   font-size: 25px;
+  margin-top: -10px;
   margin-bottom: 25px;
 }
 
@@ -49,6 +52,7 @@ h1 {
 }
 
 .buttons-button {
+  font-family: 'Hind Siliguri', sans-serif;
   background-color: transparent;
   color: white;
   border: 1px solid white;
@@ -67,10 +71,11 @@ h1 {
 .history {
   margin: 20px 0px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .history-button {
+  font-family: 'Hind Siliguri', sans-serif;
   background-color: transparent;
   color: white;
   border: none;
